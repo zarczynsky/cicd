@@ -17,5 +17,7 @@ services:
   node-db:
     container_name: node-react-db
     image: node-react-db:1.0
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
     build:
       context: ./db
