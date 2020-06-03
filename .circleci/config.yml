@@ -13,11 +13,25 @@ jobs:
       - run:
           command: npm test
           working_directory: ./server
-
+  docker-mk:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          command: |
+            echo "$DOCKERHUB_PASSWORD" | sudo docker login --username $DOCKERHU>
+            sudo docker build ./server -t zarczynsky/node-react-db
+            sudo docker push zarczynsky/node-react-db
 workflows:
     build-and-test:
       jobs:
         - build-and-test:
+              filters:
+                branches:
+                  only: master
+        - docker-mk:
+              requires:
+                - build-and-test
               filters:
                 branches:
                   only: master
