@@ -19,7 +19,7 @@ jobs:
       - checkout
       - run:
           command: |
-            echo "$DOCKERHUB_PASSWORD" | sudo docker login --username $DOCKERHU>
+            echo "$DOCKERHUB_PASSWORD" | sudo docker login --username $DOCKERHUB_USER --password-stdin
             sudo docker build ./server -t zarczynsky/node-react-db
             sudo docker push zarczynsky/node-react-db
 workflows:
