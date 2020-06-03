@@ -13,7 +13,7 @@ jobs:
       - run:
           command: npm test
           working_directory: ./server
-  docker-mk:
+  docker-publish:
     machine: true
     steps:
       - checkout
